@@ -1,0 +1,15 @@
+<%= simple_form_for(@campervan) do |f| %>
+  <%= f.input :camper_type %>
+  <%= f.input :camper_make %>
+  <%= f.input :total_occupancy %>
+  <%= f.input :total_beds %>
+  <%= f.input :region %>
+  <%= f.input :has_bathroom %>
+  <%= f.input :has_shower %>
+  <%= f.input :has_kitchen %>
+  <%= f.input :has_internet %>
+  <%= f.input :has_tv %>
+  <%= f.input :price %>
+  <%= f.input :address %>
+  <%= f.submit %>
+<% end %>
