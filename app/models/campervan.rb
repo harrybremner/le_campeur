@@ -4,4 +4,5 @@ class Campervan < ApplicationRecord
   validates :price, presence: true
   validates :address, presence: true
   belongs_to :user
+  has_many :bookings
 end
