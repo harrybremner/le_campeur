@@ -14,6 +14,23 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_30_151331) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "campervans", force: :cascade do |t|
+    t.string "camper_type"
+    t.string "camper_make"
+    t.integer "total_occupancy"
+    t.integer "total_beds"
+    t.string "region"
+    t.boolean "has_bathroom"
+    t.boolean "has_shower"
+    t.boolean "has_kitchen"
+    t.boolean "has_internet"
+    t.boolean "has_tv"
+    t.float "price"
+    t.string "address"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
