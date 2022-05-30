@@ -10,9 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_30_151331) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_30_162839) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bookings", force: :cascade do |t|
+    t.date "start_date"
+    t.date "end_date"
+    t.integer "price_per_night"
+    t.integer "total_price"
+    t.bigint "user_id", null: false
+    t.bigint "campervan_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["campervan_id"], name: "index_bookings_on_campervan_id"
+    t.index ["user_id"], name: "index_bookings_on_user_id"
+  end
 
   create_table "campervans", force: :cascade do |t|
     t.string "camper_type"
@@ -45,4 +58,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_30_151331) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "bookings", "campervans"
+  add_foreign_key "bookings", "users"
 end
