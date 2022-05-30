@@ -10,8 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 0) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_30_141555) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "campervans", force: :cascade do |t|
+    t.string "camper_type"
+    t.string "camper_make"
+    t.integer "total_occupancy"
+    t.integer "total_beds"
+    t.string "region"
+    t.boolean "has_bathroom"
+    t.boolean "has_shower"
+    t.boolean "has_kitchen"
+    t.boolean "has_internet"
+    t.boolean "has_tv"
+    t.float "price"
+    t.string "address"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
 end

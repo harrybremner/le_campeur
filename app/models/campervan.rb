@@ -1,0 +1,2 @@
+class Campervan < ApplicationRecord
+end
