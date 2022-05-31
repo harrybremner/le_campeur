@@ -1,0 +1,14 @@
+.camper-banner {
+  background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url(asset_path('camper_cover.jpg'));
+  height: 400px;
+  width: 100%;
+  text-align: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 0% 84%;
+  overflow: hidden;
+  .hero-text {
+    width: 1000px;
+    max-width: 1000px;
+  }
+}

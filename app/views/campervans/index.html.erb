@@ -1,4 +1,13 @@
-<h1> Campers </h1>
+<div class="camper-banner mb-4 d-flex align-items-center justify-content-center">
+  <div class="text-left text-white">
+    <div class="container">
+      <div class="hero-text">
+        <h1>Campers</h1>
+      </div>
+    </div>
+  </div>
+</div>
+
 
   <% @campervans.each do |campervan|%>
       <% if campervan.photo.key %>
@@ -13,7 +22,7 @@
     <br>
     <% end %>
 
-<%= link_to "Create new campervan", new_campervan_path(@campervan) %>
+    <%= link_to "Create new campervan", new_campervan_path(@campervan) %>
 
 
 <div class="card-list">
@@ -73,4 +82,3 @@
 <br>
 <br>
 <%= link_to "Create new camper", new_campervan_path(@campervan) %>
-
