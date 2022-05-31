@@ -1,7 +1,26 @@
-  <% if @user.photo.key %>
-      <%= cl_image_tag current_user.photo.key, class: "avatar-large dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-  <% end %>
-<h2><%= @user.first_name %></h2>
-<p><%= @user.email %></p>
-
-<%= link_to "Home", root_path(), class: "btn btn-primary"%>
+<br>
+<br>
+<div class="container">
+  <div class="user-profile">
+    <div class="cards row justify-content-evenly">
+      <div class="card-category col-4">
+      <br>
+        <% if @user.photo.key %>
+          <%= cl_image_tag current_user.photo.key, class: "avatar-large dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+        <% end %>
+        <p><%= @user.first_name %> <%= @user.last_name %></p>
+        <p><%= @user.email %> </p>
+        <p>Created at <%= @user.created_at %> </p>
+        <%= link_to "Edit Profile", edit_user_registration_path(current_user)%>
+      </div>
+      <div class="card-category col-4">
+        <h2>My Campervans</h2>
+        <p>LIST ALL CAMPERVANS BELONGING TO USER</p>
+      </div>
+      <div class="card-category col-4">
+        <h2>My Bookings</h2>
+        <p>LIST ALL BOOKINGS BELONGING TO USER</p>
+      </div>
+    </div>
+  </div>
+</div>
