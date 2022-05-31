@@ -1,0 +1,12 @@
+<h1> Users </h1>
+  <% @users.each do |user|%>
+  <%= link_to user.first_name, user_path(user) %>
+  <%= user.first_name %> <%= user.last_name %>
+  <%= cl_image_tag user.photo.key, height: 300, width: 400, crop: :fill %>
+
+  <%= link_to "Delete", user_path(user), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+  <% end %>
+
+
+
+<%= link_to "Create new user", new_user_registration_path() %>

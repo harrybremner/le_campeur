@@ -1,0 +1,6 @@
+<h2><%= @user.first_name %></h2>
+<p><%= @user.email %></p>
+<%= cl_image_tag @user.photo.key, height: 300, width: 400, crop: :fill %>
+
+
+<%= link_to "Home", root_path(), class: "btn btn-primary"%>
