@@ -1,6 +1,7 @@
+  <% if @user.photo.key %>
+      <%= cl_image_tag current_user.photo.key, class: "avatar-large dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+  <% end %>
 <h2><%= @user.first_name %></h2>
 <p><%= @user.email %></p>
-<%= cl_image_tag @user.photo.key, height: 300, width: 400, crop: :fill %>
-
 
 <%= link_to "Home", root_path(), class: "btn btn-primary"%>
