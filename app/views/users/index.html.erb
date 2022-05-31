@@ -1,14 +1,18 @@
-<h1> Users </h1>
-  <% @users.each do |user|%>
-  <% if user.photo.key %>
-      <%= cl_image_tag current_user.photo.key, class: "avatar-large dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-  <% end %>
-  <%= link_to user.first_name, user_path(user) %>
-  <%= user.first_name %> <%= user.last_name %>
-
-  <%= link_to "Delete", user_path(user), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
-  <% end %>
-
-
-
-<%= link_to "Create new user", new_user_registration_path() %>
+<br>
+<br>
+<div class="container">
+  <div class="user-profile">
+    <div class="cards row justify-content-evenly">
+      <div class="card-category col-4">
+        <% @users.each do |user|%>
+        <% if user.photo.key %>
+            <%= cl_image_tag current_user.photo.key, class: "avatar-large dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+        <% end %>
+        <%= link_to user.first_name, user_path(user) %>
+        <%= user.first_name %> <%= user.last_name %>
+        <%= link_to "Delete", user_path(user), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+        <% end %>
+        </div>
+    </div>
+  </div>
+</div>
