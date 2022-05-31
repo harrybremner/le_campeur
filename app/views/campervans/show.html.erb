@@ -1,7 +1,18 @@
 <h2><%= @campervan.camper_type %></h2>
 <% if @campervan.photo.key %>
       <%= cl_image_tag @campervan.photo.key, height: 300, width: 400, crop: :fill %>
-    <%end%>
+<%end%>
+<p><%= @campervan.camper_make %></p>
+<p><%= @campervan.total_occupancy %></p>
+<p><%= @campervan.total_beds %></p>
+<p><%= @campervan.has_bathroom %></p>
+<p><%= @campervan.has_shower %></p>
+<p><%= @campervan.has_kitchen %></p>
+<p><%= @campervan.has_internet %></p>
+<p><%= @campervan.has_tv %></p>
+<p><%= @campervan.address %></p>
+<p><%= @campervan.price %></p>
+
 <h1><%= @campervan.camper_make %> <%= link_to "Edit", edit_campervan_path(@campervan), class: "btn btn-primary"%> </h1>
 
 Capacity:
