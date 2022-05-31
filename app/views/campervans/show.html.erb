@@ -1,7 +1,7 @@
 <h2><%= @campervan.camper_type %></h2>
 <% if @campervan.photo.key %>
       <%= cl_image_tag @campervan.photo.key, height: 300, width: 400, crop: :fill %>
-    <%end%>
+<%end%>
 <p><%= @campervan.camper_make %></p>
 <p><%= @campervan.total_occupancy %></p>
 <p><%= @campervan.total_beds %></p>
