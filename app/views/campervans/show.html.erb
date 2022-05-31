@@ -1,7 +1,5 @@
-<h2><%= @campervan.name %></h2>
+<h2><%= @campervan.camper_type %></h2>
 <p><%= @campervan.address %></p>
-<p><%= @campervan.phone_number %></p>
-<p><%= @campervan.category %></p>
-<%= render "reviews/show", campervan: @campervan %>
+<p><%= @campervan.price %></p>
 
 <%= link_to "Home", campervans_path(@campervan), class: "btn btn-primary"%>
