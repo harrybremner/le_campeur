@@ -1,5 +1,5 @@
 <h2><%= @campervan.camper_type %></h2>
 <p><%= @campervan.address %></p>
 <p><%= @campervan.price %></p>
-
+<%= cl_image_tag @campervan.photo.key, height: 300, width: 400, crop: :fill %>
 <%= link_to "Home", campervans_path(@campervan), class: "btn btn-primary"%>
