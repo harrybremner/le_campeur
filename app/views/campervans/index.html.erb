@@ -1,9 +1,20 @@
 <h1> Campers </h1>
+
   <% @campervans.each do |campervan|%>
-  <h2><%= link_to campervan.camper_type, campervan_path(campervan) %> </h2> <%= campervan.camper_make %> - <%= campervan.region %> ; £<%= campervan.price %>
-  <%= link_to "Delete", campervan_path(campervan), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
-  <% end %>
+      <% if campervan.photo.key %>
+        <%= cl_image_tag campervan.photo.key, height: 130, width: 150, crop: :fill %>
+      <%end%>
+   <h2> <%= link_to campervan.camper_type, campervan_path(campervan) %> </h2>  <%= campervan.camper_make %> - <%= campervan.region %>: £<%= campervan.price %>
+    <%= link_to campervan_path(campervan), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
+    <i class="fa-solid fa-trash-can"></i>
+    <%end%>
+    </h2>
+    <br>
+    <br>
+    <% end %>
 
-<div></div>
-
-<%= link_to "Create new campervan", new_campervan_path(@campervan) %>
+<br>
+<br>
+<br>
+<br>
+<%= link_to "Create new camper", new_campervan_path(@campervan) %>
