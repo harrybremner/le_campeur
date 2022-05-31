@@ -8,11 +8,11 @@
     <%= f.input :first_name,
                 required: true,
                 autofocus: true,
-                input_html: { autocomplete: "email" }%>
+                input_html: { autocomplete: "first-name" }%>
     <%= f.input :last_name,
                 required: true,
                 autofocus: true,
-                input_html: { autocomplete: "email" }%>
+                input_html: { autocomplete: "last-name" }%>
     <%= f.input :email,
                 required: true,
                 autofocus: true,
@@ -24,6 +24,10 @@
     <%= f.input :password_confirmation,
                 required: true,
                 input_html: { autocomplete: "new-password" } %>
+    <%= f.input :photo, as: :file,
+                required: true,
+                input_html: { autocomplete: "new-photo" } %>
+
   </div>
 
   <div class="form-actions">
