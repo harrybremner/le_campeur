@@ -13,11 +13,12 @@ class CampervansController < ApplicationController
 
   def create
     @campervan = Campervan.new(campervan_params)
-     if @campervan.save
-       redirect_to campervan_path(@campervan)
-     else
-       render :new, status: :unprocessable_entity
-     end
+    @campervan.user = current_user
+      if @campervan.save
+        redirect_to campervans_path(@campervans)
+      else
+        render :new, status: :unprocessable_entity
+      end
   end
 
   def edit
@@ -41,7 +42,7 @@ class CampervansController < ApplicationController
   def campervan_params
     params.require(:campervan).permit(:camper_type, :camper_make, :total_occupancy,
                                       :total_beds, :region, :has_bathroom,
-                                      :has_shower, :price, :has_kitchen, :has_internet,
+                                      :has_shower, :has_kitchen, :has_internet,
                                       :has_tv, :price, :address, :photo)
   end
 end
