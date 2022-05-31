@@ -13,5 +13,42 @@
 <p><%= @campervan.address %></p>
 <p><%= @campervan.price %></p>
 
+<h1><%= @campervan.camper_make %> <%= link_to "Edit", edit_campervan_path(@campervan), class: "btn btn-primary"%> </h1>
+
+Capacity:
+<h1>
+<% (@campervan.total_occupancy).times do %>
+<i class="fa-solid fa-person"></i>
+<%end%>
+</h1>
+
+Beds:
+<h1>
+<% (@campervan.total_beds).times do %>
+<i class="fa-solid fa-bed"></i>
+<%end%>
+</h1>
+
+Amneties:
+<h1>
+  <% if @campervan.has_bathroom %>
+    <i class="fa-solid fa-toilet"></i>
+    <% end %>
+  <% if @campervan.has_shower %>
+    <i class="fa-solid fa-shower"></i>
+  <% end %>
+  <% if @campervan.has_kitchen %>
+    <i class="fa-solid fa-kitchen-set"></i>
+  <% end %>
+  <% if @campervan.has_internet %>
+    <i class="fa-solid fa-wifi"></i>
+  <% end %>
+  <% if @campervan.has_tv %>
+    <i class="fa-solid fa-tv"></i>
+  <% end %>
+</h1>
+
+<h1><span class="badge bg-secondary"> £<%= @campervan.price %></span></h1>
+
 
 <%= link_to "Home", campervans_path(@campervan), class: "btn btn-primary"%>
