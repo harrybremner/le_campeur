@@ -1,16 +1,64 @@
-<%= simple_form_for(@campervan) do |f| %>
-  <%= f.input :camper_type %>
-  <%= f.input :camper_make %>
-  <%= f.input :total_occupancy %>
-  <%= f.input :total_beds %>
-  <%= f.input :region %>
-  <%= f.input :has_bathroom %>
-  <%= f.input :has_shower %>
-  <%= f.input :has_kitchen %>
-  <%= f.input :has_internet %>
-  <%= f.input :has_tv %>
-  <%= f.input :price %>
-  <%= f.input :address %>
-  <%= f.input :photo, as: :file %>
-  <%= f.submit %>
-<% end %>
+<div class="form-image">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <div class="container-form" >
+          <div class="form-header">
+            Add a camper
+          </div>
+          <%= simple_form_for(@campervan) do |f| %>
+            <div class="row">
+              <div class="col">
+                <%= f.input :camper_type %>
+              </div>
+              <div class="col">
+                <%= f.input :camper_make %>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <%= f.input :total_occupancy %>
+              </div>
+              <div class="col">
+                <%= f.input :total_beds %>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col">
+                <%= f.input :has_bathroom %>
+                <%= f.input :has_shower %>
+                <%= f.input :has_kitchen %>
+              </div>
+              <div class="col">
+                <%= f.input :has_internet %>
+                <%= f.input :has_tv %>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col">
+                <%= f.input :region %>
+              </div>
+              <div class="col">
+                <%= f.input :address %>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col">
+                <%= f.input :price %>
+              </div>
+              <div class="col">
+                <%= f.input :photo, as: :file %>
+              </div>
+            </div>
+            <%= f.submit class: "btn-form" %>
+          <% end %>
+        </div>
+      </div>
+      <div class="col">
+      </div>
+    </div>
+  </div>
+</div>
