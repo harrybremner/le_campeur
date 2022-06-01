@@ -83,6 +83,8 @@
       </div>
     <%end%>
     </div>
+    <%= link_to "View this camper!", campervan_path(campervan) %>
+    <%= link_to "Book this camper!", new_campervan_booking_path(campervan) %>
   </div>
   <div class="col">
   <img id="map" src="https://github.com/lewagon/fullstack-images/blob/master/frontend/map-static.png?raw=true" >

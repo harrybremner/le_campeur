@@ -3,7 +3,7 @@
 <div class="container">
   <div class="user-profile">
 
-    <div class="cards row justify-content-evenly">
+    <div class="cards-user row justify-content-evenly">
 
       <div class="card-category">
       <br>
@@ -26,12 +26,32 @@
                     <%= cl_image_tag campervan.photo.key, class: "avatar-large dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
                 <% end %>
                 <%= link_to campervan.camper_make, campervan_path(campervan) %>
-                <%= link_to "Delete", campervan_path(campervan), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+                <%= link_to "Delete campervan", campervan_path(campervan), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
           </div>
         </div>
               <% end %>
       </div>
 
     </div>
+      <div class="border">
+        <h2>My Bookings</h2>
+              <% @bookings.each do |booking|%>
+        <div class="row justify-content-evenly">
+          <div class="card-category col-12">
+                <%= booking.campervan.camper_type %>
+                <% if booking.campervan.photo.key %>
+                    <%= cl_image_tag booking.campervan.photo.key, class: "avatar-large dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+                <% end %>
+                <p>Booking begins on <%= booking.start_date  %></p>
+                <p>Booking ends on <%= booking.end_date %></p>
+                <p>Total price for trip = £<%= booking.total_price  %></p>
+                <%= link_to "See campervan", campervan_path(booking.campervan) %>
+                <%= link_to "Edit booking", edit_campervan_booking_path(booking) %>
+                <%= link_to "Delete booking", booking_path(booking), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+          </div>
+        </div>
+              <% end %>
+      </div>
+
   </div>
 </div>

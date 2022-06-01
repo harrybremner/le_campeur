@@ -1,0 +1,10 @@
+<h1>New Booking for <%= @campervan.user.first_name %>'s <%= @campervan.camper_make %></h1>
+<%= simple_form_for [@campervan, @booking] do |f| %>
+f.date_field : event_date, min: Date.today
+  <%= f.input :start_date, as: :date, html5: true %>
+  <%= f.input :end_date, as: :date, html5: true %>
+
+  <%= f.button :submit %>
+<% end %>
+
+<%= link_to "Campervam", campervan_path(@campervan), class: "btn btn-primary" %>

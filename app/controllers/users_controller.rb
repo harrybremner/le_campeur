@@ -7,6 +7,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @campervans = Campervan.all.select(params[:user_id])
+    @bookings = Booking.all.select(params[:user_id])
   end
 
   def destroy
