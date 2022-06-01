@@ -26,7 +26,7 @@ class BookingsController < ApplicationController
     @booking.campervan = @campervan
     @booking.price_per_night = @campervan.price.to_i
     if @booking.save
-      redirect_to campervan_path(@campervan)
+      redirect_to user_path(@user)
     else
       render :new, status: :unprocessable_entity
     end
