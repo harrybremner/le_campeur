@@ -2,9 +2,12 @@
 <br>
 <div class="container">
   <div class="user-profile">
+
     <div class="cards row justify-content-evenly">
-      <div class="card-category col-4">
+
+      <div class="card-category">
       <br>
+      <h2>My Profile</h2>
         <% if @user.photo.key %>
           <%= cl_image_tag current_user.photo.key, class: "avatar-large dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
         <% end %>
@@ -13,14 +16,22 @@
         <p>Created at <%= @user.created_at %> </p>
         <%= link_to "Edit Profile", edit_user_registration_path(current_user)%>
       </div>
-      <div class="card-category col-4">
+
+      <div class="border">
         <h2>My Campervans</h2>
-        <p>LIST ALL CAMPERVANS BELONGING TO USER</p>
+              <% @campervans.each do |campervan|%>
+        <div class="cards row justify-content-evenly">
+          <div class="card-category col-4">
+                <% if campervan.photo.key %>
+                    <%= cl_image_tag campervan.photo.key, class: "avatar-large dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+                <% end %>
+                <%= link_to campervan.camper_make, campervan_path(campervan) %>
+                <%= link_to "Delete", campervan_path(campervan), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+          </div>
+        </div>
+              <% end %>
       </div>
-      <div class="card-category col-4">
-        <h2>My Bookings</h2>
-        <p>LIST ALL BOOKINGS BELONGING TO USER</p>
-      </div>
+
     </div>
   </div>
 </div>
