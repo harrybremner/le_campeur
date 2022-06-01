@@ -7,14 +7,3 @@
 @import "button";
 @import "card_list";
 @import "camper_banner"
-=======
-
-.carousel-image img{
-  height: 300px;
-}
-
-.cards {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-gap: 16px;
-}
