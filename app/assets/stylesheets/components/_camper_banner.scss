@@ -12,3 +12,13 @@
     max-width: 1000px;
   }
 }
+
+.carousel-image img{
+  height: 300px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 16px;
+}
