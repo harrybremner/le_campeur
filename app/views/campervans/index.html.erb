@@ -1,4 +1,4 @@
-<h1> Campers </h1>
+<h1> Campers </h1> <%= link_to "Create new camper", new_campervan_path(@campervan) %>
 
 
 <% @campervans.each do |campervan|%>
@@ -66,4 +66,3 @@
 <br>
 <br>
 <br>
-<%= link_to "Create new camper", new_campervan_path(@campervan) %>
