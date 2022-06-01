@@ -37,8 +37,10 @@ Amneties:
   <% if @campervan.has_tv %>
     <i class="fa-solid fa-tv"></i>
   <% end %>
-  <span class="badge bg-secondary"> £<%= @campervan.price %></span><
+  <span class="badge bg-secondary"> £<%= @campervan.price %></span>
 </h1>
+
+<%= link_to "Book this camper!", new_campervan_booking_path(@campervan) %>
 
 
 <%= link_to "Home", campervans_path(@campervan), class: "btn btn-primary"%>
