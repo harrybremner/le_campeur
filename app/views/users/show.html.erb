@@ -15,11 +15,11 @@
         <p><%= @user.email %> </p>
         <p>Created on <%= @user.created_at.mday %>/<%= @user.created_at.month %>/<%= @user.created_at.year %></p>
         <%= link_to "Edit Profile", edit_user_registration_path(current_user)%>
+        <%= link_to "Add campervan", new_campervan_path(), class: "btn btn-ghost" %>
       </div>
 
       <div class="border cards-user2 row justify-content-evenly">
         <h2 class="userh2">My Campervans</h2>
-              <%= link_to "Add campervan", new_campervan_path(), class: "btn btn-ghost" %>
               <% @campervans.each do |campervan|%>
         <div class="">
           <div class="">
