@@ -69,12 +69,11 @@
                   <div class="align-middle price" style="margin:0" >
                     <strong>£<%= campervan.price %></strong> / night
                   </div>
+
                   <div class="align-middle price" style="margin:0" >
-                    4.9 <i class="fa-solid fa-star"></i>
+                  <%= link_to "Book Now!", new_campervan_booking_path(campervan) %>
                   </div>
-                  <div class="align-middle price" style="margin:0" >
-                    <i class="fa-light fa-heart-half-stroke"></i>
-                  </div>
+                  <%= link_to "View this camper!", campervan_path(campervan) %>
               </div>
 
             </div>
@@ -83,8 +82,6 @@
       </div>
     <%end%>
     </div>
-    <%= link_to "View this camper!", campervan_path(campervan) %>
-    <%= link_to "Book this camper!", new_campervan_booking_path(campervan) %>
   </div>
   <div class="col">
   <img id="map" src="https://github.com/lewagon/fullstack-images/blob/master/frontend/map-static.png?raw=true" >
@@ -96,4 +93,3 @@
 <br>
 <br>
 <br>
-<%= link_to "Create new camper", new_campervan_path(@campervan) %>
