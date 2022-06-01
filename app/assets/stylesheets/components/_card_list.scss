@@ -2,7 +2,7 @@
   overflow: hidden;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  width: 300px;
+  width: 286px;
   border-radius: 20px;
 }
 
@@ -41,8 +41,7 @@
 }
 
 .bottom-row {
-  padding-top: 8px;
-  padding-bottom: 8px;
+  vertical-align: middle;
 }
 
 .price {
@@ -63,29 +62,19 @@
 
 
 .carousel-image img{
-  height: 300px;
-}
-
-.cards {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-gap: 16px;
-  width: 50%;
+  width: 100%;
+  object-fit: cover;
 
 }
 
-.cards-container .cards {
-  padding: 16px;
+
+
+.costing {
+  padding-top: 15px;
 }
 
-.inner-container #map {
-height: 100vh;
-width: 100%;
-object-fit: cover;
-}
 
-.inner-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: start;
+a, a:hover, a:focus, a:active {
+  text-decoration: none;
+  color: inherit;
 }

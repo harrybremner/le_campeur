@@ -9,84 +9,79 @@
   </div>
 </div>
 
-<div class="inner-container">
-<div class="row">
-    <div class="col">
-  <div class="cards">
+<div class="campervan-list-body">
+  <div class="box" >
     <% @campervans.each do |campervan|%>
+
+
+
         <div class="card-list">
+          <%= link_to campervan_path(campervan) do %>
 
-          <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
 
-            <div class="carousel-inner">
+              <div class="carousel-inner">
 
-              <div class="carousel-item active">
-                <div class="carousel-image">
+                <div class="carousel-item active">
+                  <div class="carousel-image">
+                    <%= cl_image_tag campervan.photo.key %>
+                  </div>
+                </div>
+
+                <div class="carousel-item">
+                  <div class="carousel-image">
+                    <%= cl_image_tag campervan.photo.key %>
+                  </div>
+                </div>
+
+                <div class="carousel-item">
+                  <div class="carousel-image">
                   <%= cl_image_tag campervan.photo.key %>
+                  </div>
                 </div>
+
               </div>
 
-              <div class="carousel-item">
-                <div class="carousel-image">
-                  <%= cl_image_tag campervan.photo.key %>
-                </div>
-              </div>
-
-              <div class="carousel-item">
-                <div class="carousel-image">
-                <%= cl_image_tag campervan.photo.key %>
-                </div>
-              </div>
-
+              <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+              </button>
             </div>
 
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Next</span>
-            </button>
-          </div>
+            <div class="card-trip-infos">
+              <div class="container">
 
-          <div class="card-trip-infos">
-            <div class="container">
-
-              <div class="row top-row align-items-start">
-                <div class="col-3 align-middle">
-                  <p style="margin:0" ><i class="fa-solid fa-person"></i> <%= campervan.total_occupancy %> </p>
-                </div>
-                <div class="col-3 align-middle">
-                  <p style="margin:0"><i class="fa-solid fa-bed"></i> <%= campervan.total_beds %> </p>
-                </div>
-                <div class="col-6 align-middle">
-                  <p style="margin:0"><i class="fa-solid fa-location-dot"></i><%= campervan.region %></p>
-                </div>
-              </div>
-
-              <div class="flex-container bottom-row">
-                  <div class="align-middle price" style="margin:0" >
-                    <strong>£<%= campervan.price %></strong> / night
+                <div class="row top-row align-items-start">
+                  <div class="col-3 align-middle">
+                    <p style="margin:0" ><i class="fa-solid fa-person"></i> <%= campervan.total_occupancy %> </p>
                   </div>
-
-                  <div class="align-middle price" style="margin:0" >
-                  <%= link_to "Book Now!", new_campervan_booking_path(campervan) %>
+                  <div class="col-3 align-middle">
+                    <p style="margin:0"><i class="fa-solid fa-bed"></i> <%= campervan.total_beds %> </p>
                   </div>
-                  <%= link_to "View this camper!", campervan_path(campervan) %>
-              </div>
+                  <div class="col-6 align-middle">
+                    <p style="margin:0"><i class="fa-solid fa-location-dot"></i><%= campervan.region %></p>
+                  </div>
+                </div>
 
+                <div class="flex-container bottom-row">
+                    <div class="align-middle price costing" style="margin:0" >
+                      <strong>£<%= campervan.price.to_i %></strong> / night
+                    </div>
+
+                    <div class="align-middle price" style="margin:0" >
+                    <%= link_to "Book Now!", new_campervan_booking_path(campervan), class: "btn btn-ghost" %>
+                    </div>
+                </div>
+
+              </div>
             </div>
+            <% end %>
           </div>
-
-      </div>
     <%end%>
     </div>
   </div>
 </div>
-
-
-<br>
-<br>
-<br>
-<br>
