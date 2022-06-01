@@ -13,6 +13,12 @@ class BookingsController < ApplicationController
     @booking = Booking.new # Needed to instantiate the form_for
   end
 
+  def edit
+    @campervan = Campervan.find(params[:id])
+    @user = current_user
+    @booking = Booking.find(params[:campervan_id])
+  end
+
   def create
     @campervan = Campervan.find(params[:campervan_id])
     @booking = Booking.new(booking_params)
