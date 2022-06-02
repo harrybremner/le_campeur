@@ -5,6 +5,7 @@ class CampervansController < ApplicationController
 
   def show
     @campervan = Campervan.find(params[:id])
+    @booking = Booking.new
   end
 
   def new
