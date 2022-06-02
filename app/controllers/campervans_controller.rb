@@ -5,6 +5,13 @@ class CampervansController < ApplicationController
 
   def show
     @campervan = Campervan.find(params[:id])
+    @campervans = Campervan.all
+    @markers = @campervans.geocoded.map do |campervan|
+      {
+        lat: campervan.latitude,
+        lng: campervan.longitude
+      }
+    end
   end
 
   def new
