@@ -59,17 +59,17 @@
           data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
     </div>
 
-      <div class="container">
+      <div class="container" data-controller="booking-calculator" data-price=<%= @campervan.price.to_i %>>
         <div class="form-wrapper" style="width: 400px; margin: 0 auto;">
           <h2>Booking form</h2>
 
           <%= simple_form_for [@campervan, @booking] do |f| %>
-            <%= f.input :start_date, as: :date, required: false, input_html: {id: "datepicker"} %>
-            <%= f.input :end_date, as: :date, required: false, input_html: {id: "range_end"} %>
+            <%= f.input :start_date, as: :date, html5: true, input_html: {id: "start_date", data:{booking_calculator_target:"startDate"}} %>
+            <%= f.input :end_date, as: :date, html5: true, input_html: {id: "end_date", data:{booking_calculator_target:"endDate", action:"change->booking-calculator#calculate"}} %>
             <%= f.button :submit, "Make Booking", class: "btn btn-primary" %>
           <% end %>
           <br>
-            <p>Total price = £<%= @campervan.price %></p>
+            <p>Total price = £<em data-booking-calculator-target="totalPrice"></em></p>
         </div>
       </div>
 

@@ -3,9 +3,9 @@ import flatpickr from "flatpickr";
 import rangePlugin from "flatpickr/dist/plugins/rangePlugin";
 
 const initFlatpickr = () => {
-  flatpickr("#datepicker", {
+  flatpickr("#start_date", {
     altInput: true,
-    plugins: [new rangePlugin({ input: "#range_end"})]
+    plugins: [new rangePlugin({ input: "#end_date"})]
   });
 }
 
