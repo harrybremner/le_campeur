@@ -1,9 +1,11 @@
+ <div class="container">
+  <div class="form-wrapper" style="width: 400px; margin: 0 auto;">
+    <h2>Booking form</h2>
 
-
-
-          <%= simple_form_for [@campervan, @booking] do |f| %>
-            <%= f.input :start_date, as: :date, html5: true %>
-            <%= f.input :end_date, as: :date, html5: true %>
-            <%= f.submit class: "btn-form" %>
-          <% end %>
- 
+    <%= simple_form_for [@campervan, @booking] do |f| %>
+      <%= f.input :start_date, as: :date, required: false, input_html: {id: "datepicker"} %>
+      <%= f.input :end_date, as: :date, required: false, input_html: {id: "range_end"} %>
+      <%= f.button :submit, "Make Booking", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

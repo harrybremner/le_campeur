@@ -6,7 +6,15 @@
       </div>
     </div>
     <div class="container" >
-      <%= link_to "Browse", campervans_path, class: "btn btn-flat" %>
+      <%= form_tag campervans_path, method: :get, class: "d-flex" do %>
+        <%= text_field_tag :query,
+          params[:query],
+          class: "form-control",
+          placeholder: "Where are you looking to rent your camper?"
+        %>
+        <%= submit_tag "Search", class: "btn btn-flat" %>
+      <% end %>
+      <br>
     </div>
   </div>
 </div>

@@ -58,13 +58,20 @@
           data-map-markers-value="<%= @markers.to_json %>"
           data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
     </div>
-                <div class="container-form form-booking" >
-                    New Booking for <%= @campervan.user.first_name %>'s <%= @campervan.camper_make %>
-                    <%= simple_form_for [@campervan, @booking] do |f| %>
-                    <%= f.input :start_date, as: :date, html5: true %>
-                    <%= f.input :end_date, as: :date, html5: true %>
-                    <%= f.submit class: "btn-form" %>
-                  <% end %>
-              </div>
+
+      <div class="container">
+        <div class="form-wrapper" style="width: 400px; margin: 0 auto;">
+          <h2>Booking form</h2>
+
+          <%= simple_form_for [@campervan, @booking] do |f| %>
+            <%= f.input :start_date, as: :date, required: false, input_html: {id: "datepicker"} %>
+            <%= f.input :end_date, as: :date, required: false, input_html: {id: "range_end"} %>
+            <%= f.button :submit, "Make Booking", class: "btn btn-primary" %>
+          <% end %>
+          <br>
+            <p>Total price = £<%= @campervan.price %></p>
+        </div>
+      </div>
+
  </div>
 </div>
