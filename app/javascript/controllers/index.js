@@ -4,6 +4,9 @@
 
 import { application } from "./application"
 
+import AddressAutocompleteController from "./address_autocomplete_controller.js"
+application.register("address-autocomplete", AddressAutocompleteController)
+
 import BookingCalculatorController from "./booking_calculator_controller.js"
 application.register("booking-calculator", BookingCalculatorController)
 
