@@ -12,6 +12,8 @@ class CampervansController < ApplicationController
         lng: campervan.longitude
       }
     end
+    @booking = Booking.new
+
   end
 
   def new

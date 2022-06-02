@@ -26,7 +26,7 @@ class BookingsController < ApplicationController
     @booking.campervan = @campervan
     @booking.price_per_night = @campervan.price.to_i
     if @booking.save
-      redirect_to campervan_path(@campervan)
+      redirect_to root_path()
     else
       render :new, status: :unprocessable_entity
     end
@@ -36,7 +36,7 @@ class BookingsController < ApplicationController
     @booking = Booking.find(params[:id])
     @booking.destroy
     # No need for app/views/bookings/destroy.html.erb
-    redirect_to campervan_path, status: :see_other
+    redirect_to root_path(), status: :see_other
   end
 
   private
