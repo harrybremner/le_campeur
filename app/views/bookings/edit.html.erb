@@ -1,2 +1,11 @@
-<h1>Edit booking for <%= @campervan.user.first_name %>'s <%= @campervan.camper_make %></h1>
-<%= render "form", campervan: @campervan %>
+ <div class="container">
+  <div class="form-wrapper" style="width: 400px; margin: 0 auto;">
+    <h2>Edit booking form</h2>
+
+    <%= simple_form_for [@campervan, @booking] do |f| %>
+      <%= f.input :start_date, as: :date, required: false, input_html: {id: "datepicker"} %>
+      <%= f.input :end_date, as: :date, required: false, input_html: {id: "range_end"} %>
+      <%= f.button :submit, "Edit Booking", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

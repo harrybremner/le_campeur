@@ -19,6 +19,12 @@ class BookingsController < ApplicationController
     @booking = Booking.find(params[:campervan_id])
   end
 
+  def update
+    @booking = Booking.find(params[:campervan_id])
+    @booking = Booking.update(booking_params)
+    redirect_to user_path(current_user)
+  end
+
   def create
     @campervan = Campervan.find(params[:campervan_id])
     @booking = Booking.new(booking_params)
@@ -26,7 +32,7 @@ class BookingsController < ApplicationController
     @booking.campervan = @campervan
     @booking.price_per_night = @campervan.price.to_i
     if @booking.save
-      redirect_to root_path()
+      redirect_to user_path(current_user)
     else
       render :new, status: :unprocessable_entity
     end
@@ -36,7 +42,7 @@ class BookingsController < ApplicationController
     @booking = Booking.find(params[:id])
     @booking.destroy
     # No need for app/views/bookings/destroy.html.erb
-    redirect_to root_path(), status: :see_other
+    redirect_to user_path(current_user), status: :see_other
   end
 
   private

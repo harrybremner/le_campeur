@@ -6,7 +6,6 @@
             <h3>Profile for <%=@user.first_name%></h3>
             <p>My email is: <%= @user.email %> </p>
             <p>My account was created on: <%= @user.created_at.mday %>/<%= @user.created_at.month %>/<%= @user.created_at.year %></p>
-            <p>Any changes needed?</p>
             <%= link_to "Edit Profile", edit_user_registration_path(current_user), class: "btn btn-ghost"%>
             <%= link_to "Create new campervan", new_campervan_path(), class: "btn btn-ghost"%>
           </div>
@@ -38,6 +37,7 @@
                   <p>Booking ends on <%= booking.end_date %></p>
                   <p>Total price for trip = £<%= booking.total_price  %></p>
                   <%= link_to "Edit Booking", edit_campervan_booking_path(booking), class: "btn btn-ghost"%>
+                  <%= link_to "Cancel Booking", campervan_booking_path(booking), class: "btn btn-ghost", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
             </div>
                 <% end %>
           </div>
