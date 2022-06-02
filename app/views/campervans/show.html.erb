@@ -52,8 +52,11 @@
             <h2 class="card-trip-pricing"><span class="badge bg-secondary"> £<%= @campervan.price.to_i %> / night</span></h2>
         <%= link_to "Book this camper!", new_campervan_booking_path(@campervan), class: "btn btn-flat" %>
         <%= link_to "Edit", edit_campervan_path(@campervan), class: "btn btn-flat"%>
-
       </div>
+        <div style="width: 100%; height: 600px;"
+          data-controller="map"
+          data-map-markers-value="<%= @markers.to_json %>"
+          data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
     </div>
 
       <div class="container">
