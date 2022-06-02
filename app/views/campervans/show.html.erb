@@ -1,7 +1,6 @@
 <div class="container">
 <br>
 <div class="d-flex justify-content-center">
-<div class="shadow-lg p-3 mb-5 bg-body rounded">
     <div class="card" style="width: 50rem;">
       <div class="text-center">
     <h1><%= @campervan.camper_type %></h1>
@@ -56,6 +55,13 @@
 
       </div>
     </div>
- </div>
+                <div class="container-form form-booking" >
+                    New Booking for <%= @campervan.user.first_name %>'s <%= @campervan.camper_make %>
+                    <%= simple_form_for [@campervan, @booking] do |f| %>
+                    <%= f.input :start_date, as: :date, html5: true %>
+                    <%= f.input :end_date, as: :date, html5: true %>
+                    <%= f.submit class: "btn-form" %>
+                  <% end %>
+              </div>
  </div>
 </div>
