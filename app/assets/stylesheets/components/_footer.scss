@@ -1,18 +1,18 @@
 
-
 .footer {
-  bottom: 0;
   width: 100%;
   background: #ffffff;
   display: flex;
   align-items: center;
   justify-content: space-between;
   height: 0px;
-  padding: 0px 50px;
+  // padding: 0px 50px;
   color: rgba(0, 0, 0, 0.3);
   padding: 25px;
   margin-bottom: 12px;
+  overflow: hidden;
 }
+
 
 .footer-links {
   display: flex;

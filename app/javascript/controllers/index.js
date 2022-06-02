@@ -4,6 +4,9 @@
 
 import { application } from "./application"
 
+import BookingCalculatorController from "./booking_calculator_controller.js"
+application.register("booking-calculator", BookingCalculatorController)
+
 import HelloController from "./hello_controller.js"
 application.register("hello", HelloController)
 

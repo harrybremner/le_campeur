@@ -54,7 +54,7 @@ class CampervansController < ApplicationController
   private
 
   def campervan_params
-    params.require(:campervan).permit(:camper_type, :camper_make, :total_occupancy,
+    params.require(:campervan).permit(:camper_type, :camper_make, :description, :total_occupancy,
                                       :total_beds, :region, :has_bathroom,
                                       :has_shower, :has_kitchen, :has_internet,
                                       :has_tv, :price, :address, :photo)
