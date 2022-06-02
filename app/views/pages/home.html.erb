@@ -2,7 +2,11 @@
   <div class="text-left text-white">
     <div class="container">
       <div class="hero-text">
-        <h1 class="typed-js">Don’t imagine, book your next camper adventure now!</h1>
+      <% if current_user %>
+        <h1 class="typed-js">Hey, <%= @user.first_name %>. Book your next camper adventure now!</h1>
+      <% else %>
+        <h1 class="typed-js">Don't just imagine; book your next camper adventure now!</h1>
+      <% end %>
       </div>
     </div>
     <div class="container" >

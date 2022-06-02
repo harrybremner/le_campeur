@@ -1,7 +1,6 @@
 class CampervansController < ApplicationController
   skip_before_action :authenticate_user!, only: :index
   def index
-    # @campervans = Campervan.all
     if params[:query].present?
       @campervans = Campervan.search_by_location(params[:query])
     else
