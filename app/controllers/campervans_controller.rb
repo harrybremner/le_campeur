@@ -19,7 +19,6 @@ class CampervansController < ApplicationController
       }
     end
     @booking = Booking.new
-
   end
 
   def new
