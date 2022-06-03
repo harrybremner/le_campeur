@@ -1,2 +1,3 @@
-<h2><%= campervan.camper_type %></h2>
-<p><%= campervan.price %></p>
+<%= cl_image_tag campervan.photo.key, height: 60, width: 80, crop: :fill%>
+<p><span class="badge bg-primary"> <%= link_to campervan.camper_type, campervan_path(campervan) %></span></p>
+<p><span class="badge bg-secondary"> £<%= campervan.price %> </span></p>
