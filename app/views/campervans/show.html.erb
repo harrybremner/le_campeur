@@ -29,7 +29,7 @@
       <div class="capacity-contents">
         <div class="capacity-header">Beds:</div>
         <% (@campervan.total_beds).times do %>
-        <i class="fa-solid fa-person"></i>
+        <i class="fa-solid fa-bed"></i>
         <%end%>
       </div>
     </div>
@@ -39,18 +39,24 @@
       <div class="amenity">
           <% if @campervan.has_bathroom? %>
           <i class="fa-solid fa-toilet"></i> Toilet
+          <%else%>
+            <i class="fa-regular fa-circle-xmark"></i> Toilet
           <% end %>
       </div>
 
       <div class="amenity">
           <% if @campervan.has_shower? %>
             <i class="fa-solid fa-shower"></i> Shower
+          <%else%>
+            <i class="fa-regular fa-circle-xmark"></i> Shower
           <% end %>
       </div>
 
       <div class="amenity">
           <% if @campervan.has_kitchen? %>
           <i class="fa-solid fa-kitchen-set"></i> Kitchen
+          <%else%>
+            <i class="fa-regular fa-circle-xmark"></i> Kitchen
           <% end %>
       </div>
 
@@ -58,6 +64,8 @@
       <div class="amenity">
           <% if @campervan.has_internet? %>
           <i class="fa-solid fa-wifi"></i> Wifi
+          <%else%>
+            <i class="fa-regular fa-circle-xmark"></i> Wifi
           <% end %>
       </div>
 
@@ -66,6 +74,8 @@
       <div class="amenity">
         <% if @campervan.has_tv? %>
         <i class="fa-solid fa-tv"></i> TV
+        <%else%>
+            <i class="fa-regular fa-circle-xmark"></i> TV
         <% end %>
       </div>
     </div>
