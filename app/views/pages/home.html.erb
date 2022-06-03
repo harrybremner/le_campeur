@@ -15,10 +15,6 @@
           params[:query],
           class: "form-control",
           placeholder: "Where are you looking to rent your camper?" %>
-          <%# , input_html: {data: {address_autocomplete_target: "address"}},
-                wrapper_html: {data: {controller: "address-autocomplete",
-                address_autocomplete_api_key_value:
-                ENV["MAPBOX_API_KEY"]}}  %>
         <%= submit_tag "Search", class: "btn btn-flat" %>
       <% end %>
       <br>
