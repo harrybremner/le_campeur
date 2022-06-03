@@ -6,8 +6,8 @@ Rails.application.routes.draw do
   # root "articles#index"
   root "pages#home"
   resources :campervans do
-    resources :bookings, except: :destroy
+    resources :bookings, except: [:destroy, :edit, :update]
   end
   resources :users, only: [:show, :destroy, :index]
-  resources :bookings, only: [:destroy]
+  resources :bookings, only: [:destroy, :edit, :update]
 end

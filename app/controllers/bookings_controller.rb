@@ -3,8 +3,9 @@ class BookingsController < ApplicationController
   attr_accessor :end_date, :start_date
 
   def show
-    @campervan = Campervan.find(params[:id])
-    @bookings = Booking.all.select(params[:campervan_id])
+    @user = current_user
+    @campervan = Campervan.find(params[:campervan_id])
+    @booking = Booking.find(params[:id])
   end
 
   def new
@@ -14,15 +15,18 @@ class BookingsController < ApplicationController
   end
 
   def edit
-    @campervan = Campervan.find(params[:id])
     @user = current_user
-    @booking = Booking.find(params[:campervan_id])
+    @booking = Booking.find(params[:id])
+    @campervan = @booking.campervan
   end
 
   def update
-    @booking = Booking.find(params[:campervan_id])
-    @booking = Booking.update(booking_params)
-    redirect_to user_path(current_user)
+    @booking = Booking.find(params[:id])
+    if @booking.update(booking_params)
+      redirect_to user_path(current_user)
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   def create
@@ -32,7 +36,7 @@ class BookingsController < ApplicationController
     @booking.campervan = @campervan
     @booking.price_per_night = @campervan.price.to_i
     if @booking.save
-      redirect_to user_path(current_user)
+      redirect_to campervan_booking_path(id: @booking.id, campervan_id: @campervan.id)
     else
       render :new, status: :unprocessable_entity
     end

@@ -23,7 +23,7 @@
                 <div class="owner-div" >
                   <p style="margin:0">Owner: <%= campervan.user.first_name + " " +campervan.user.last_name %> </p>
                 </div>
-                
+
                 <div class="owner-div" >
                 <p style="margin:0">Owner: <%= campervan.user.first_name %> </p>
               </div>
@@ -39,7 +39,7 @@
                 <div class="booking-btn">
 
                   <p style="margin:0"> <strong>£<%= campervan.price.to_i %></strong> / night </p>
-                  <%= link_to "Book Now!", new_campervan_booking_path(campervan), class: "btn btn-ghost" %>
+                  <%= link_to "Book Now!", campervan_path(campervan), class: "btn btn-ghost" %>
                 </div>
 
               </div>
