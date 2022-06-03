@@ -14,11 +14,11 @@ class CampervansController < ApplicationController
     @markers = @campervans.geocoded.map do |campervan|
       {
         lat: campervan.latitude,
-        lng: campervan.longitude
+        lng: campervan.longitude,
+        info_window: render_to_string(partial: "info_window", locals: { campervan: campervan })
       }
     end
     @booking = Booking.new
-
   end
 
   def new
