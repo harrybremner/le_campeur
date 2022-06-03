@@ -1,0 +1,66 @@
+.camper-card-container {
+  padding-left: 10rem;
+  padding-right: 10rem;
+  padding-top: 1rem;
+  height: 100%;
+}
+
+.camper-card-category {
+  width: 100%;
+}
+
+.camper-img-1 img {
+  width: 100%;
+  object-fit: cover;
+  object-position: bottom;
+  border-radius: 20px;
+  height: 350px;
+}
+
+.camper-grid-profile {
+  display: flex;
+  justify-content: space-between;
+  height: 500px;
+
+}
+
+
+
+.camper-grid-profile  {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 50% 50%;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.capacity-container {
+  padding-top: 15px;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 50% 50%;
+
+
+}
+
+.title-camper {
+  border-bottom: 1px solid rgb(211, 211, 211);
+  font-size: 24px;
+  padding-right: 15px;
+}
+
+.capacity-container-amenities {
+  padding-top: 15px;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 50% 50%;
+
+}
+
+.capacity-header-amenity {
+  font-size: 22px;
+  font-weight: 300;
+  padding-top: 30px;
+}

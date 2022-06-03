@@ -1,68 +1,95 @@
-<div class="container">
-<br>
-<div class="d-flex justify-content-center">
-    <div class="card" style="width: 50rem;">
-      <div class="text-center">
-    <h1><%= @campervan.camper_type %></h1>
-          <div class="card-img-top">
-            <% if @campervan.photo.key %>
-                  <%= cl_image_tag @campervan.photo.key, height: 300, width: 400, crop: :fill %>
-            <%end%>
-          </div>
 
-        <div class="card-body">
-          <h1><%= @campervan.camper_make %> </h1>
-          <div class="border-bottom"></div>
-          <div class="d-flex justify-content-between">
+<div class="camper-card-container">
+  <div class="camper-card-category">
+  <h1><%= @campervan.camper_type %></h1>
+  <p><i class="fa-solid fa-location-dot"></i><%= @campervan.region %></p>
 
-            Capacity:
-            <h2>
-            <% (@campervan.total_occupancy).times do %>
-            <i class="fa-solid fa-person"></i>
-            <%end%>
-            </h2>
+  <%# image %>
+  <%# information & checkout %>
+    <div class="camper-img-1">
+      <% if @campervan.photo.key %>
+            <%= cl_image_tag @campervan.photo.key %>
+      <%end%>
+    </div>
+  <div class="camper-grid-profile">
 
-            Beds:
-            <h2>
-            <% (@campervan.total_beds).times do %>
-            <i class="fa-solid fa-bed"></i>
-            <%end%>
-            </h2>
+  <%# information %>
+  <div class="cp-information">
+    <div class="title-camper"><%= @campervan.camper_make %> </div>
 
-            Amneties:
-            <h2>
-              <% if @campervan.has_bathroom %>
-                <i class="fa-solid fa-toilet"></i>
-                <% end %>
-              <% if @campervan.has_shower %>
-                <i class="fa-solid fa-shower"></i>
-              <% end %>
-              <% if @campervan.has_kitchen %>
-                <i class="fa-solid fa-kitchen-set"></i>
-              <% end %>
-              <% if @campervan.has_internet %>
-                <i class="fa-solid fa-wifi"></i>
-              <% end %>
-              <% if @campervan.has_tv %>
-                <i class="fa-solid fa-tv"></i>
-              <% end %>
-            </h2>
-            </div>
-          </div>
-            <h2 class="card-trip-pricing"><span class="badge bg-secondary"> £<%= @campervan.price.to_i %> / night</span></h2>
-        <%= link_to "Book this camper!", new_campervan_booking_path(@campervan), class: "btn btn-flat" %>
-        <%= link_to "Edit", edit_campervan_path(@campervan), class: "btn btn-flat"%>
+    <div class="capacity-container">
+      <div class="capacity-contents">
+        <div class="capacity-header">Capacity:</div>
+        <% (@campervan.total_occupancy).times do %>
+        <i class="fa-solid fa-person"></i>
+        <%end%>
+
       </div>
-        <div style="width: 100%; height: 600px;"
-          data-controller="map"
-          data-map-markers-value="<%= @markers.to_json %>"
-          data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+
+      <div class="capacity-contents">
+        <div class="capacity-header">Beds:</div>
+        <% (@campervan.total_beds).times do %>
+        <i class="fa-solid fa-person"></i>
+        <%end%>
+      </div>
     </div>
 
-      <div class="container" data-controller="booking-calculator" data-price=<%= @campervan.price.to_i %>>
-        <div class="form-wrapper" style="width: 400px; margin: 0 auto;">
-          <h2>Booking form</h2>
+    <div class="capacity-header-amenity">What the camper offers:</div>
+    <div class="capacity-container-amenities">
+      <div class="amenity">
+          <% if @campervan.has_bathroom? %>
+          <i class="fa-solid fa-toilet"></i> Toilet
+          <% end %>
+      </div>
 
+      <div class="amenity">
+          <% if @campervan.has_shower? %>
+            <i class="fa-solid fa-shower"></i> Shower
+          <% end %>
+      </div>
+
+      <div class="amenity">
+          <% if @campervan.has_kitchen? %>
+          <i class="fa-solid fa-kitchen-set"></i> Kitchen
+          <% end %>
+      </div>
+
+
+      <div class="amenity">
+          <% if @campervan.has_internet? %>
+          <i class="fa-solid fa-wifi"></i> Wifi
+          <% end %>
+      </div>
+
+
+
+      <div class="amenity">
+        <% if @campervan.has_tv? %>
+        <i class="fa-solid fa-tv"></i> TV
+        <% end %>
+      </div>
+    </div>
+
+    <%# descriptioned needed %>
+
+
+    <div class="capacity-container-amenities">
+      <div class="amenity">
+        <%= link_to "Edit", edit_campervan_path(@campervan), class: "btn-ghost"%>
+      </div>
+    </div>
+  </div>
+
+
+
+  <%# booking %>
+  <div class="cp-information">
+      <div class="container-form-camper">
+          <div class="container" data-controller="booking-calculator" data-price=<%= @campervan.price.to_i %>>
+              <div class="form-wrapper" style="width: 400px; margin: 0 auto;">
+                  <h2>Booking form</h2>
+          
+           <h2 class="form-header">Booking form</h2>
           <%= simple_form_for [@campervan, @booking] do |f| %>
             <%= f.input :start_date, as: :date, html5: true, input_html: {id: "start_date", data:{booking_calculator_target:"startDate"}} %>
             <%= f.input :end_date, as: :date, html5: true, input_html: {id: "end_date", data:{booking_calculator_target:"endDate", action:"change->booking-calculator#calculate"}} %>
@@ -71,7 +98,26 @@
           <br>
             <p>Total price = £<em data-booking-calculator-target="totalPrice"></em></p>
         </div>
-      </div>
+  </div>
 
- </div>
+    </div>
+  </div>
 </div>
+
+
+
+
+
+
+
+
+<%# <div class="container">
+<div class="d-flex justify-content-center">
+    <div class="card" style="width: 50rem;">
+      <div class="text-center">
+
+      </div>
+        <div style="width: 100%; height: 600px;"
+          data-controller="map"
+          data-map-markers-value="<%= @markers.to_json %>
+          <%# data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>
