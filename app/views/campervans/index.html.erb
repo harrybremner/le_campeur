@@ -9,47 +9,41 @@
   </div>
 </div> %>
 
-<div class="container">
+<div class="container-index">
   <div class="cards-demo">
-        <% @campervans.each do |campervan|%>
-          <div class="card-demo">
-            <%= link_to campervan_path(campervan) do %>
-              <%# image %>
-                <div class="carousel-image img">
-                  <%= cl_image_tag campervan.photo.key, height: 300, width: 400, crop: :fill %>
-              </div>
-              <div class="card-info-container">
+    <% @campervans.each do |campervan|%>
+      <div class="card-demo">
+        <%= link_to campervan_path(campervan) do %>
+          <%# image %>
+              <%= cl_image_tag campervan.photo.key, height: 300, crop: :fill, class:"carousel-image" %>
+          <div class="card-info-container">
 
-                <div class="owner-div" >
-                  <p style="margin:0">Owner: <%= campervan.user.first_name + " " +campervan.user.last_name %> </p>
-                </div>
-
-                <div class="owner-div" >
-                <p style="margin:0">Owner: <%= campervan.user.first_name %> </p>
-              </div>
+            <div class="owner-div" >
+              <p style="margin:0">Owner: <%= campervan.user.first_name %> </p>
+            </div>
 
 
-                <div class="info-div">
-                  <p style="margin:0" ><i class="fa-solid fa-person"></i> <%= campervan.total_occupancy %> </p>
-                  <p style="margin:0"><i class="fa-solid fa-bed"></i> <%= campervan.total_beds %> </p>
-                  <p style="margin:0"><i class="fa-solid fa-location-dot"></i><%= campervan.region %></p>
-                </div>
+            <div class="info-div">
+              <p style="margin:0" ><i class="fa-solid fa-person"></i> <%= campervan.total_occupancy %> </p>
+              <p style="margin:0"><i class="fa-solid fa-bed"></i> <%= campervan.total_beds %> </p>
+              <p style="margin:0"><i class="fa-solid fa-location-dot"></i><%= campervan.region %></p>
+            </div>
 
 
-                <div class="booking-btn">
+            <div class="booking-btn">
 
-                  <p style="margin:0"> <strong>£<%= campervan.price.to_i %></strong> / night </p>
-                  <%= link_to "Book Now!", campervan_path(campervan), class: "btn btn-ghost" %>
-                </div>
+              <p style="margin:0"> <strong>£<%= campervan.price.to_i %></strong> / night </p>
+              <%= link_to "Book Now!", campervan_path(campervan), class: "btn btn-ghost" %>
+            </div>
 
-              </div>
-            <%end%>
           </div>
         <%end%>
-    </div>
+      </div>
+    <%end%>
   </div>
-  <div style="width: 100%; height: 600px;"
+  <div class="map-container" style="width: 40vw; height: 90vh;"
           data-controller="map"
           data-map-markers-value="<%= @markers.to_json %>"
-          data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+          data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+  </div>
 </div>
