@@ -1,10 +1,11 @@
 
 .card-demo {
   // padding: 1rem;
-  height: 377px;
+  height: 390px;
   border-radius: 20px;
   color: #717171;
   font-size: 15px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
 }
 
 .cards-demo {
@@ -15,6 +16,7 @@
   grid-template-columns: repeat(auto-fit, minmax(221px, 277px));
   justify-content: center;
   padding: 1rem;
+
 }
 
 .carousel-image img {
