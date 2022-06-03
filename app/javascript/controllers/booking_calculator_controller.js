@@ -21,7 +21,6 @@ export default class extends Controller {
     const dailyPrice = Number.parseInt(this.element.dataset.price, 10)
     const totalPrice = totalDays * dailyPrice
     totalPrice >= 0 ? (this.totalPriceTarget.innerText = totalPrice) : (this.totalPriceTarget.innerText = 0);
-    // this.totalPriceTarget.innerText = totalPrice
     this.startDateInputTarget.innerText = startDate.toLocaleDateString("en-US", options)
     this.endDateInputTarget.innerText = endDate.toLocaleDateString("en-US", options)
     this.numberOfDaysTarget.innerText = totalDays
