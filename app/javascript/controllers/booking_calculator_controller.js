@@ -20,7 +20,8 @@ export default class extends Controller {
     const totalDays = ((endDate - startDate)/(1000 * 60 * 60 * 24))
     const dailyPrice = Number.parseInt(this.element.dataset.price, 10)
     const totalPrice = totalDays * dailyPrice
-    this.totalPriceTarget.innerText = totalPrice
+    totalPrice >= 0 ? (this.totalPriceTarget.innerText = totalPrice) : (this.totalPriceTarget.innerText = 0);
+    // this.totalPriceTarget.innerText = totalPrice
     this.startDateInputTarget.innerText = startDate.toLocaleDateString("en-US", options)
     this.endDateInputTarget.innerText = endDate.toLocaleDateString("en-US", options)
     this.numberOfDaysTarget.innerText = totalDays
