@@ -1,6 +1,14 @@
 class CampervansController < ApplicationController
   skip_before_action :authenticate_user!, only: :index
   def index
+    @campervans = Campervan.all
+    @markers = @campervans.geocoded.map do |campervan|
+      {
+        lat: campervan.latitude,
+        lng: campervan.longitude,
+        info_window: render_to_string(partial: "info_window", locals: { campervan: campervan })
+      }
+    end
     if params[:query].present?
       @campervans = Campervan.search_by_location(params[:query])
     else
@@ -11,13 +19,6 @@ class CampervansController < ApplicationController
   def show
     @campervan = Campervan.find(params[:id])
     @campervans = Campervan.all
-    @markers = @campervans.geocoded.map do |campervan|
-      {
-        lat: campervan.latitude,
-        lng: campervan.longitude,
-        info_window: render_to_string(partial: "info_window", locals: { campervan: campervan })
-      }
-    end
     @booking = Booking.new
   end
 
