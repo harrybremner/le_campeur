@@ -27,7 +27,7 @@
 .form-image {
   background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url(asset_path('home_2.jpg'));
   width: 100%;
-  height: 100vh;
+  height: auto;
   text-align: left;
   background-size: cover;
   background-repeat: no-repeat;

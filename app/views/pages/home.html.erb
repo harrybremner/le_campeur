@@ -10,11 +10,12 @@
       </div>
     </div>
     <div class="container" >
-      <%= form_tag campervans_path, method: :get, class: "d-flex" do %>
+      <%= form_tag campervans_path, method: :get, class: "d-flex search-form" do %>
         <%= text_field_tag :query,
           params[:query],
           class: "form-control",
-          placeholder: "Where are you looking to rent your camper?" %>
+
+          placeholder: "Search for campers near you." %>
           <%# , input_html: {data: {address_autocomplete_target: "address"}},
                 wrapper_html: {data: {controller: "address-autocomplete",
                 address_autocomplete_api_key_value:

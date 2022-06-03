@@ -1,14 +1,17 @@
-  <% @campervan.bookings.each do |booking| %>
-    <li> <%= booking.start_date %>
+
+
+<div class="container">
+  <div class="form-wrapper" style="width: 400px; margin: 0 auto;">
+  <br>
+    <h1>Booking request sent!</h1>
+    <p>Thank you for your request to book <%= @campervan.user.first_name %>'s <%= @campervan.camper_type %>!</p>
+    <p>Dates from <%= @booking.start_date %> until <%= @booking.end_date %>. <%= @campervan.user.first_name  %> will respond within 24 hours!</p>
+    <%= link_to "View My Account", user_path(current_user), class: "btn btn-ghost" %>
     <br>
-    <%= booking.end_date %></p>
-    <% if @campervan.photo.attached? %>
-      <%= cl_image_tag @campervan.photo.key, height: 150, width: 200, crop: :fill %>
-    <% end %>
     <br>
-      <%= link_to "Delete",
-    campervan_booking_path(booking) ,
-    data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
-  %>
-  <% end %>
-</ul>
+    <div class="camper-img-1">
+      <%= cl_image_tag @campervan.photo.key %>
+    </div>
+
+  </div>
+</div>
