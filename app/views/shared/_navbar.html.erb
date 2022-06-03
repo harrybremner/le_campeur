@@ -11,8 +11,8 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
-          <li class="nav-item active">
-            <%= link_to "Browse all campervans", campervans_path, class: "nav-link" %>
+          <li class="nav-item active" style="padding-top:8px; padding-right:12px">
+            <%= link_to "Browse all campervans", campervans_path, class: "btn-nav" %>
           </li>
           <li class="nav-item dropdown">
             <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>

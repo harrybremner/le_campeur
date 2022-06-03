@@ -81,3 +81,71 @@
   transform: translateY(0);
   color: white
 }
+
+.btn-form-camper {
+  align-items: center;
+  background-clip: padding-box;
+  background-color: #6CA1D0;
+  border: 1px solid transparent;
+  border-radius: .25rem;
+  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  justify-content: center;
+  line-height: 1.25;
+  margin: 0;
+  min-height: 3rem;
+  padding: calc(.875rem - 1px) calc(1.5rem - 1px);
+  position: relative;
+  text-decoration: none;
+  transition: all 250ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  width: 100%;
+}
+
+.btn-form-camper:hover,
+.btn-form-camper:focus {
+  background-color: #EED166;
+  box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+}
+
+.btn-form-camper:hover {
+  transform: translateY(-1px);
+}
+
+.btn-form-camper:active {
+  background-color: #EED166;
+  box-shadow: rgba(0, 0, 0, .06) 0 2px 4px;
+  transform: translateY(0);
+}
+
+.btn-nav {
+  color: #777777;
+  padding: 8px 24px;
+  border-radius: 15px;
+  font-weight: lighter;
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+}
+
+.btn-nav:hover {
+  opacity: 1;
+  background-color: #cccccc;
+  color: white
+
+}
+
+.btn-nav:active {
+  background-color: #6CA1D0;
+  box-shadow: rgba(0, 0, 0, .06) 0 2px 4px;
+  transform: translateY(0);
+  color: white;
+}
