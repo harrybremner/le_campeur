@@ -1,11 +1,32 @@
- <div class="container">
-  <div class="form-wrapper" style="width: 400px; margin: 0 auto;">
-    <h2>Edit booking form</h2>
+<br>
+  <div class="container" data-controller="booking-calculator" data-price=<%= @campervan.price.to_i %>>
+      <div class="form-wrapper" style="width: 400px; margin: 0 auto;">
+          <h2 class="text-justify">Edit Booking Form</h2>
 
-    <%= simple_form_for [@campervan, @booking] do |f| %>
-      <%= f.input :start_date, as: :date, required: false, input_html: {id: "datepicker"} %>
-      <%= f.input :end_date, as: :date, required: false, input_html: {id: "range_end"} %>
-      <%= f.button :submit, "Edit Booking", class: "btn btn-primary" %>
-    <% end %>
+           <%# <h2 class="form-header">Booking form</h2> %>
+          <%= simple_form_for [@booking] do |f| %>
+            <%= f.input :start_date, as: :date, html5: true, input_html: {id: "start_date", data:{booking_calculator_target:"startDate"}} %>
+            <%= f.input :end_date, as: :date, html5: true, input_html: {id: "end_date", data:{booking_calculator_target:"endDate", action:"change->booking-calculator#calculate"}} %>
+            <%= f.button :submit, "Edit Booking", class: "btn btn-primary" %>
+          <% end %>
+          <br>
+            <div class="d-flex justify-content-between mt-3">
+              <p><strong>Price per day</strong></p>
+              <p> £<%= @campervan.price  %></p>
+            </div>
+            <div class="d-flex justify-content-between mt-3">
+              <p><strong>Start Date</strong></p>
+              <p data-booking-calculator-target="startDateInput"></p>
+            </div>
+
+            <div class="d-flex justify-content-between mt-3 border-bottom">
+              <p><strong>End Date</strong></p>
+              <p data-booking-calculator-target="endDateInput"></p>
+            </div>
+
+            <div class="d-flex justify-content-between mt-3">
+              <p><strong>Total price for <em data-booking-calculator-target="numberOfDays"></em> days:</strong></p>
+              <p><strong>£<em data-booking-calculator-target="totalPrice"></em></strong></p>
+            </div>
+    </div>
   </div>
-</div>
