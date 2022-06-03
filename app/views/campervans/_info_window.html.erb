@@ -1,3 +1,25 @@
-<%= cl_image_tag campervan.photo.key, height: 60, width: 80, crop: :fill%>
-<p><span class="badge bg-primary"> <%= link_to campervan.camper_type, campervan_path(campervan) %></span></p>
-<p><span class="badge bg-secondary"> £<%= campervan.price %> </span></p>
+<div class="info-window">
+
+  <div class="row">
+      <%= cl_image_tag campervan.photo.key, crop: :fill%>
+  </div>
+
+  <div class="row">
+    <h4> <%= link_to campervan.camper_type, campervan_path(campervan) %></h4>
+  </div>
+
+ <div class="border-bottom"></div>
+
+
+  <div class="row d-flex justify-content-between">
+      <div class="col">
+        <h5 style="margin:0" ><i class="fa-solid fa-person"></i> <%= campervan.total_occupancy %> </h5>
+      </div>
+
+      <div class="col">
+       <h5> <span class="badge bg-secondary"> £<%= campervan.price.to_i %> /night </span> </h5>
+      </div>
+
+  </div>
+
+</div>

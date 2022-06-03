@@ -10,9 +10,11 @@ class CampervansController < ApplicationController
       }
     end
     if params[:query].present?
-      @campervans = Campervan.search_by_location(params[:query])
-    else
-      @campervans = Campervan.all
+    @campervans = Campervan.search_by_location(params[:query])
+      if @campervans.empty?
+        @campervans = Campervan.all
+        flash.notice = "No campers available for this location. Showing all available campers instead."
+      end
     end
   end
 
