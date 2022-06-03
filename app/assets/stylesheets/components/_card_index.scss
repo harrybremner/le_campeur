@@ -1,5 +1,7 @@
 .container-index {
   display: flex;
+  padding-left: 58px;
+  padding-right: 58px;
 }
 
 
@@ -15,10 +17,11 @@
   width: 30%;
   min-width: 245px;
   padding-bottom: 10px;
+
 }
 
 .cards-demo {
-  width: 60vw;
+  width: 70vw;
   margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
