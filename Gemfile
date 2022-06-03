@@ -84,3 +84,5 @@ gem "cloudinary"
 
 gem "pg_search"
 gem "geocoder"
+
+gem 'date_validator', '~> 0.10.0'

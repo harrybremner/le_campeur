@@ -36,7 +36,7 @@
                   <p>Booking begins on <%= booking.start_date  %></p>
                   <p>Booking ends on <%= booking.end_date %></p>
                   <p>Total price for trip = £<%= booking.total_price  %></p>
-                  <%= link_to "Edit Booking", edit_campervan_booking_path(booking), class: "btn btn-ghost"%>
+                  <%= link_to "Edit Booking", edit_booking_path(booking), class: "btn btn-ghost"%>
                   <%= link_to "Cancel Booking", booking_path(booking), class: "btn btn-ghost", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
             </div>
                 <% end %>
