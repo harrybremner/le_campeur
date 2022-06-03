@@ -1,65 +1,87 @@
-    <!-- user info -->
-    <div class="bg-white">
-      <div class="container p-3">
-        <div class="row">
-          <div class="col-md-8">
-            <h3>Profile for <%=@user.first_name%></h3>
-            <p>My email is: <%= @user.email %> </p>
-            <p>My account was created on: <%= @user.created_at.mday %>/<%= @user.created_at.month %>/<%= @user.created_at.year %></p>
+<div class="profile-grid">
+  <div class="profile-column-left">
+    <h3 class="profile-header"><%=@user.first_name%></h3>
+    <div class="profile-image">
+      <% if @user.photo.key %>
+        <%= cl_image_tag current_user.photo.key, class: "card-img-top", style: "border-radius: 5px; max-height: 100%; object-fit: cover", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+        <% end %>
+    </div>
+    <div class="profile-box profile-information">
+            <p>Email: <%= @user.email %> </p>
+            <p>Account created: <%= @user.created_at.mday %>/<%= @user.created_at.month %>/<%= @user.created_at.year %></p>
+            <p>Number of Bookings: <%= @bookings.all.count %>
+            <p>Number of Campervans: <%= @campervans.all.count %>
+          <div class="profile-button">
             <%= link_to "Edit Profile", edit_user_registration_path(current_user), class: "btn btn-ghost"%>
             <%= link_to "Create new campervan", new_campervan_path(), class: "btn btn-ghost"%>
           </div>
-          <div class="col-md-4">
-            <% if @user.photo.key %>
-              <%= cl_image_tag current_user.photo.key, class: "card-img-top", style: "border-radius: 5px", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-            <% end %>
-          </div>
-        </div>
-      </div>
     </div>
-    <!-- /user info -->
+  </div>
 
-    <!-- Booking info-->
-    <div class="container py-3">
-      <div class="row">
-        <div class="col-md-8">
 
-          <h2>My Bookings</h2>
+  <div class="profile-column">
 
-          <!-- make a card -->
-        <% @bookings.each do |booking|%>
-            <div class="card p-3 mb-3">
-                  <%= booking.campervan.camper_type %>
-                  <% if booking.campervan.photo.key %>
-                      <%= cl_image_tag booking.campervan.photo.key, class: "avatar-large dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-                  <% end %>
-                  <p>Booking begins on <%= booking.start_date  %></p>
-                  <p>Booking ends on <%= booking.end_date %></p>
-                  <p>Total price for trip = £<%= booking.total_price  %></p>
-                  <%= link_to "Edit Booking", edit_booking_path(booking), class: "btn btn-ghost"%>
-                  <%= link_to "Cancel Booking", booking_path(booking), class: "btn btn-ghost", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
-            </div>
+
+  <% if @user.bookings.present? %>
+      <div class="booking-box booking-section">
+
+          <div class="c">
+          <h3>My Bookings:</h3>
+            <% @bookings.each do |booking|%>
+            <div class="spacing-camper-box">
+              <div class="camper-box">
+                <% if booking.campervan.photo.key %>
+                    <%= cl_image_tag booking.campervan.photo.key, class: "campervan-image" %>
                 <% end %>
-          </div>
+                <div class="camper-information">
+                  <h3 class="booking-header"><%= booking.campervan.camper_type %></h3>
+                  <div class="profile-information">
+                  <p>Start: <%= booking.start_date  %></p>
+                  <p>End: <%= booking.end_date %></p>
+                  <p>Total price: £<%= booking.total_price  %></p>
+                  </div>
+                  <%= link_to "Edit Booking", edit_campervan_booking_path(booking), class: "btn btn-ghost"%>
 
-
-        <div class="col-md-4 margin-campervans">
-          <h2>My Campervans</h2>
-          <div class="bg-white border p-3 sticky-top">
-            <div class="card border-bottom mx-auto" style="width: 18rem;">
-              <% @campervans.each do |campervan|%>
-                  <% if campervan.photo.key %>
-                      <%= cl_image_tag campervan.photo.key, class: "card-img-top", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-                  <% end %>
-                  <div class="card-body">
-                  <p class="card-text">This is your <%= campervan.camper_make  %></p>
-                  <%= link_to "View", campervan_path(campervan), class: "btn btn-ghost" %>
-                  <%= link_to "Delete", campervan_path(campervan), class: "btn btn-ghost", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+                  <%= link_to "Cancel Booking", booking_path(booking), class: "btn btn-ghost", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+                </div>
               </div>
-              <% end %>
             </div>
+              <% end %>
 
           </div>
-        </div>
       </div>
+  <% end %>
+
+  <div class="booking-box camper-section">
+    <div class="c">
+    <h3 >My Campervans:</h3>
+     <% @campervans.each do |campervan|%>
+      <div class="spacing-camper-box">
+        <div class="camper-box">
+          <% if campervan.photo.key %>
+              <%= cl_image_tag campervan.photo.key, class: "campervan-image" %>
+          <% end %>
+
+          <div class="camper-information">
+          <h3 class="booking-header"><%= campervan.camper_type %></h3>
+          <div class="profile-information">
+                        <p class="card-text"><%= campervan.camper_make  %></p>
+                        <p><i class="fa-solid fa-location-dot"></i><%= campervan.region %></p>
+          </div>
+                        <%= link_to "View", campervan_path(campervan), class: "btn btn-ghost" %>
+                        <%= link_to "Delete", campervan_path(campervan), class: "btn btn-ghost", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+
+          </div>
+          </div>
+      </div>
+      <% end %>
     </div>
+  </div>
+
+
+
+
+  </div>
+</div>
+
+    <!-- user info -->
