@@ -1,7 +1,6 @@
 class CampervansController < ApplicationController
   skip_before_action :authenticate_user!, only: :index
   def index
-    # @campervans = Campervan.all
     if params[:query].present?
       @campervans = Campervan.search_by_location(params[:query])
     else
@@ -15,7 +14,8 @@ class CampervansController < ApplicationController
     @markers = @campervans.geocoded.map do |campervan|
       {
         lat: campervan.latitude,
-        lng: campervan.longitude
+        lng: campervan.longitude,
+        info_window: render_to_string(partial: "info_window", locals: { campervan: campervan })
       }
     end
     @booking = Booking.new
@@ -54,7 +54,7 @@ class CampervansController < ApplicationController
   private
 
   def campervan_params
-    params.require(:campervan).permit(:camper_type, :camper_make, :total_occupancy,
+    params.require(:campervan).permit(:camper_type, :camper_make, :description, :total_occupancy,
                                       :total_beds, :region, :has_bathroom,
                                       :has_shower, :has_kitchen, :has_internet,
                                       :has_tv, :price, :address, :photo)

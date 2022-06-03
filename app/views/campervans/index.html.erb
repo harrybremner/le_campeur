@@ -15,8 +15,8 @@
         <div class="card-demo">
            <%= link_to campervan_path(campervan) do %>
             <%# image %>
-            <div class="carousel-image img">
-              <%= cl_image_tag campervan.photo.key %>
+              <div class="carousel-image img">
+                <%= cl_image_tag campervan.photo.key, height: 300, width: 400, crop: :fill %>
             </div>
             <div class="card-info-container">
 

@@ -62,6 +62,7 @@
       </div>
 
 
+
       <div class="amenity">
         <% if @campervan.has_tv? %>
         <i class="fa-solid fa-tv"></i> TV
@@ -83,21 +84,23 @@
 
   <%# booking %>
   <div class="cp-information">
-        <div class="container-form-camper">
-          <h2 class="form-header">Booking form</h2>
+      <div class="container-form-camper">
+          <div class="container" data-controller="booking-calculator" data-price=<%= @campervan.price.to_i %>>
+              <div class="form-wrapper" style="width: 400px; margin: 0 auto;">
+                  <h2>Booking form</h2>
+          
+           <h2 class="form-header">Booking form</h2>
           <%= simple_form_for [@campervan, @booking] do |f| %>
-            <%= f.input :start_date, as: :date, required: false, input_html: {id: "datepicker"} %>
-            <%= f.input :end_date, as: :date, required: false, input_html: {id: "range_end"} %>
-            <h2 class="card-trip-pricing"><span> £<%= @campervan.price.to_i %> / night</span></h2>
-            <p>Total price = £<%= @campervan.price %></p>
-            <%= f.button :submit, "Make Booking", class: "btn-form-camper" %>
+            <%= f.input :start_date, as: :date, html5: true, input_html: {id: "start_date", data:{booking_calculator_target:"startDate"}} %>
+            <%= f.input :end_date, as: :date, html5: true, input_html: {id: "end_date", data:{booking_calculator_target:"endDate", action:"change->booking-calculator#calculate"}} %>
+            <%= f.button :submit, "Make Booking", class: "btn btn-primary" %>
           <% end %>
           <br>
-
+            <p>Total price = £<em data-booking-calculator-target="totalPrice"></em></p>
         </div>
   </div>
 
-  </div>
+    </div>
   </div>
 </div>
 
